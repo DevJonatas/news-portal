@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/DevJonatas/news-portal#readme",
   "dependencies": {
+    "consign": "^0.1.6",
+    "ejs": "^2.6.1",
     "express": "^4.16.3"
   }
 }
