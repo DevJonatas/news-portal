@@ -8,13 +8,10 @@ module.exports = function(application){
         let noticia = req.body;
 
         let connection = application.config.dbConnection();
-        let noticiaModel = application.app.models.noticiasModel;
+        let noticiaModel = new application.app.models.noticiasModel(connection);
 
-        noticiaModel.salvarNoticia(noticia, connection, function(error, result){
+        noticiaModel.salvarNoticia(noticia, function(error, result){
             res.redirect('/noticias');
         });
-
-        //res.send(noticia);
     });
-    
 }

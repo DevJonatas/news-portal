@@ -7,9 +7,9 @@ module.exports = function(application){
         let contato = req.body;
       
         let connection = application.config.dbConnection();
-        let contatoModel = application.app.models.contatoModel;
+        let contatoModel = new application.app.models.contatoModel(connection);
 
-        contatoModel.salvarContato(connection, contato ,function(error, result){
+        contatoModel.salvarContato(contato ,function(error, result){
             res.redirect('/contato');
         });
         
