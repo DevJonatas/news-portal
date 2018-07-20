@@ -7,14 +7,20 @@ module.exports = function(application){
     application.post('/noticias/salvar',function(req,res){
         let noticia = req.body;
 
-        let connection = application.config.dbConnection();
-        let noticiaModel = application.app.models.noticiasModel;
+        req.assert('titulo','O titulo deve ser preenchido').notEmpty();
 
-        noticiaModel.salvarNoticia(noticia, connection, function(error, result){
+        let error = req.validationErrors();
+
+        if(error){
+            res.render("admin/cadastro_noticia");
+            return true;
+        }
+
+        let connection = application.config.dbConnection();
+        let noticiaModel = new application.app.models.noticiasDAO(connection);
+
+        noticiaModel.salvarNoticia(noticia, function(error, result){
             res.redirect('/noticias');
         });
-
-        //res.send(noticia);
     });
-    
 }
