@@ -1,12 +1,12 @@
-function Contatos(connection){
+function ContatosDAO(connection){
     this._connection = connection;
 }
 
-Contatos.prototype.getContatos = function (callback) {
+ContatosDAO.prototype.getContatos = function (callback) {
     this._connection.query('SELECT * FROM contato', callback);
 }
 
-Contatos.prototype.salvarContato = function (contato, callback) {
+ContatosDAO.prototype.salvarContato = function (contato, callback) {
     this._connection.query("INSERT INTO contato VALUES (?,?,?,?,?)",
         [contato.nome, contato.email, contato.ddd, contato.telefone, contato.mensagem], callback);
 
@@ -14,7 +14,7 @@ Contatos.prototype.salvarContato = function (contato, callback) {
 }
 
 module.exports = function(){
-    return Contatos;
+    return ContatosDAO;
 }
 
 /*
