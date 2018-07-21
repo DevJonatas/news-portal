@@ -7,22 +7,34 @@
 
         <h3>Entre em contato</h3></br></br>
 
-        <form action="/contato/salvar" method="post">
+        </br>
 
+        <% if(validate){ %>
+            <ul>
+                <% for(var i=0; i < validate.length; i++){ %>
+                    <li>
+                        <%=validate[i].msg %>
+                    </li>
+                <% } %>
+            </ul>
+        <% } %>    
+
+        <form action="/contato/salvar" method="post">
             <label>Nome</label></br>
-            <input type="text" id="name" name="nome" placeholder="Insira o seu nome"></br></br>
+
+            <input type="text" id="name" name="nome" placeholder="Insira o seu nome" value="<%=contato.nome%>" ></br></br>
 
             <label>Email</label></br>
-            <input type="text" id="email" name="email" placeholder="Insira o seu email"></br></br>
+            <input type="text" id="email" name="email" placeholder="Insira o seu email" value="<%=contato.email%>"></br></br>
             
             <label>DDD</label></br>
-            <input type="number" id="ddd" name="ddd" placeholder="Insira o ddd"></br></br>
+            <input type="number" id="ddd" name="ddd" placeholder="Insira o ddd" value="<%=contato.ddd%>"></br></br>
 
             <label>Telefone</label></br>
-            <input type="number" id="tel" name="telefone" placeholder="Insira o seu telefone"></br></br>
+            <input type="number" id="tel" name="telefone" placeholder="Insira o seu telefone" value="<%=contato.telefone%>"></br></br>
 
             <label>Mensagem</label></br>
-            <textarea name="mensagem" rows="10" cols="30" ></textarea></br></br>
+            <textarea name="mensagem" rows="10" cols="30" ><%=contato.mensagem%></textarea></br></br>
 
             <input type="submit" value="Enviar">
         </form>
