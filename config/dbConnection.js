@@ -2,10 +2,10 @@ let mysql = require('mysql');
 
 let connMySQL = function(){
     return mysql.createConnection({
-        host : 'localhost',
-        user : 'root',
-        password : 'toor',
-        database : 'portal'
+        host : '',
+        user : '',
+        password : '',
+        database : ''
     });
 }
 
