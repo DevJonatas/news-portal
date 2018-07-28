@@ -4,7 +4,7 @@ let connMySQL = function(){
     return mysql.createConnection({
         host : '',
         user : '',
-        password : '',
+        password: '',
         database : ''
     });
 }

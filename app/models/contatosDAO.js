@@ -7,10 +7,9 @@ ContatosDAO.prototype.getContatos = function (callback) {
 }
 
 ContatosDAO.prototype.salvarContato = function (contato, callback) {
-    this._connection.query("INSERT INTO contato VALUES (?,?,?,?,?)",
+    this._connection.query("INSERT INTO contato (nome,email,ddd,telefone,mensagem) VALUES (?,?,?,?,?)",
         [contato.nome, contato.email, contato.ddd, contato.telefone, contato.mensagem], callback);
 
-    //console.log(contato);
 }
 
 module.exports = function(){
