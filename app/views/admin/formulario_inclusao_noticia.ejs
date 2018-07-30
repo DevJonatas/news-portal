@@ -35,24 +35,61 @@
 
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/">HOME</a></li>
+						<li><a href="index.html">HOME</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
+
 	    <div class="container">
+			<% if( validate.length > 0 ){ %>	
+				<div class="row">
+					<div class="col-md-12">
+						<div class="alert alert-danger">	
+							<strong>Atenção!</strong>
+							<ul>
+								<% for(var i = 0; i < validate.length; i++){ %>
+									<li><%=validate[i].msg%></li>
+								<% } %>
+							</ul>
+						</div>		
+					</div>
+				</div>
+			<% } %>	
 	    	<div class="row">
 	    		<div class="col-md-12">
-	    			<div class="noticia_wrapper">
-		    			<span class="noticia_autor"> <%=noticia[0].autor%> </span>
-		    			<a class="noticia_titulo"><%=noticia[0].titulo%></a>
-		    			<span class="noticia_data"><%=noticia[0].data%></span>
-		    			<br />
-		    			<p class="noticia_resumo">
-		    				<%=noticia[0].noticia%>
-		    			</p>
-		    		</div>
+					
+					<form action="/noticias/salvar" method="post">
+						
+						<div class="form-group">
+							<label for="titulo">Título:</label>
+							<input type="text" class="form-control" id="titulo" name="titulo" value="<%=noticia.titulo%>">
+						</div>
+
+						<div class="form-group">
+							<label for="pwd">Resumo:</label>
+							<input type="text" class="form-control" id="resumo" name="resumo" value="<%=noticia.resumo%>">
+						</div>
+						
+						<div class="form-group">
+							<label for="pwd">Autor:</label>
+							<input type="text" class="form-control" id="autor" name="autor" value="<%=noticia.autor%>">
+						</div>
+
+						<div class="form-group">
+							<label for="pwd">Data:</label>
+							<input type="date" class="form-control" id="data_noticia" name="data" value="<%=noticia.data%>">
+						</div>
+
+						<div class="form-group">
+							<label for="pwd">Notícia:</label>
+							<textarea class="form-control" id="noticia" name="noticia"><%=noticia.noticia%></textarea>
+						</div>
+
+
+						<button type="submit" class="btn btn-default">Cadastrar</button>
+						</form>
 		    	</div>
 	    	</div>
 	    </div>
