@@ -3,21 +3,16 @@ function NoticiasDAO(connection){
 }
 
 NoticiasDAO.prototype.getNoticias = function (callback) {
-    this._connection.query('SELECT * FROM noticias ORDER BY id DESC', callback);
+    this._connection.query('SELECT * FROM noticias', callback);
 }
 
-NoticiasDAO.prototype.getNoticia = function (id,callback) {
-    //console.log(id.id_noticias);
-    this._connection.query('SELECT * FROM noticias WHERE id =' + id.id_noticias, callback);
-}
-
-NoticiasDAO.prototype.get5ultimasNoticias = function(callback){
-    this._connection.query('SELECT * FROM noticias ORDER BY id DESC limit 5',callback);
+NoticiasDAO.prototype.getNoticia = function (callback) {
+    this._connection.query('SELECT * FROM noticias WHERE id=1', callback);
 }
 
 NoticiasDAO.prototype.salvarNoticia = function(noticia,callback){
-    this._connection.query("INSERT INTO noticias (titulo,resumo,autor,noticia,data) VALUES (?,?,?,?,?)",
-        [noticia.titulo,noticia.resumo,noticia.autor, noticia.noticia, noticia.data], callback);
+    this._connection.query("INSERT INTO noticias (titulo, noticia, data) VALUES (?,?,?)",
+        [noticia.titulo, noticia.noticia, noticia.data], callback);
 }
 
 module.exports = function(){
